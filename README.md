@@ -1,6 +1,6 @@
 ﻿
 
-###### 切换到指定项目目录 electron-tomato-clock
+###### 切换到指定项目目录
 ```bash
 $ npm install 
 ```
