@@ -1,2 +1,2 @@
-# electron 目录
-关于js桌面端应用程序的运用源码
+﻿# electron-tomato-clock
+桌面端番茄钟案例
