@@ -1,16 +1,33 @@
-const { ipcRenderer } = require('electron')
+const {
+    ipcRenderer
+} = require('electron')
 const Timer = require('timer.js')
+const {
+    readFile
+} = require('./utils/file')
+const path = require('path')
 
 // 获取按钮
 const btn = document.querySelector('.btn')
 const boxContainer = document.querySelector('.box-container')
+const operate = document.querySelector('.header-operate')
 
 btn.onclick = function () {
-    startWork()
+    startWork('work')
+}
+
+operate.onclick = function (e) {
+    const spanObj = e.target
+    // 获取属性
+    const attribute = spanObj.getAttribute('value')
+    ipcRenderer.send('IPCOperate', attribute)
 }
 
 // 开始工作函数
-function startWork() {
+async function startWork(type) {
+    // 读取配置文件
+    const configResult = JSON.parse(await readFile(path.resolve(__dirname, 'config.json')))
+    const s = (type === 'work' ? parseInt(configResult.WorkTime) : parseInt(configResult.FreeTime)) * 60
     let workerTimer = new Timer({
         ontick: (e) => {
             updateTime(e)
@@ -18,17 +35,18 @@ function startWork() {
         // 时间结束，弹窗提示
         onend: () => {
             notification()
+            // updateTime(0)
         }
     })
-    // 专注时间，默认50s ，后续通过设置进行配置
-    workerTimer.start(5)
+    // 专注时间
+    workerTimer.start(s)
 }
 
 // 页面显示的时间
 function updateTime(ms) {
     const s = (ms / 1000).toFixed(0)
     const ss = (s % 60).toString()
-    const mm = (s / 60).toFixed(0)
+    const mm = Math.floor(s / 60).toFixed(0)
     boxContainer.innerHTML = `${mm.padStart(2, '0')}:${ss.padStart(2, '0')}`
 }
 
@@ -38,10 +56,8 @@ function updateTime(ms) {
 async function notification() {
     let res = await ipcRenderer.invoke('IPCNotication')
     if (res === 'rest') {
-        // 休息
+        startWork('rest')
     } else if (res === 'work') {
-        startWork()
+        startWork('work')
     }
 }
-
-// startWork()

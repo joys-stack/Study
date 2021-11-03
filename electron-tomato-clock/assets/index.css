@@ -1,0 +1,62 @@
+@import url(./reset.css);
+@import url(./style.css);
+
+.header {
+    height: 40px;
+    /* background-color: #f00; */
+    -webkit-app-region: drag;
+    cursor: pointer;
+}
+
+.header ul {
+    height: 100%;
+    display: flex;
+}
+
+.header .header-ico {
+    height: 40px;
+    width: 40px;
+    padding: 5px 0;
+    text-align: center;
+    line-height: 40px;
+}
+
+.header .header-ico img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
+.header .header-empty{
+    flex: 1;
+}
+
+.header .header-operate{
+    display: flex;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .header-operate span{
+    width: 30px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+.header .header-operate:hover span{
+    color: #fff;
+}
+
+.main .box-container {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: auto auto;
+    line-height: 200px;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    color: red;
+    font-size: 44px;
+}
