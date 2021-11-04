@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start:main": "electron .",
+    "start": "concurrently \"npm run serve\" \"wait-on http://localhost:8080 && npm run start:main\""
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -17,9 +19,14 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
+    "concurrently": "^6.3.0",
+    "electron": "^15.3.0",
+    "electron-is-dev": "^2.0.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "wait-on": "^6.0.0"
   },
+  "main": "./src/background.js",
   "eslintConfig": {
     "root": true,
     "env": {
