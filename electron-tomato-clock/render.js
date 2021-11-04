@@ -34,8 +34,8 @@ async function startWork(type) {
         },
         // 时间结束，弹窗提示
         onend: () => {
+            updateTime(0)
             notification()
-            // updateTime(0)
         }
     })
     // 专注时间

@@ -52,11 +52,11 @@ function createWindow() {
     }, {
         type: 'separator',
     }, {
-        icon: './static/exit.ico',
+        icon: './static/exit.png',
         role: 'quit',
         label: '退出'
     }])
-    tray.setToolTip('微信')
+    tray.setToolTip('番茄钟')
     tray.setContextMenu(menu)
 
     tray.on('click', () => {
