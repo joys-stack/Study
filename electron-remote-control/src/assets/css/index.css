@@ -1,0 +1,103 @@
+@import url(./reset.css);
+@import url(./style.css);
+
+.header {
+    height: 40px;
+    /* background-color: #f00; */
+    -webkit-app-region: drag;
+    cursor: pointer;
+}
+
+.header ul {
+    height: 100%;
+    display: flex;
+}
+
+.header .header-ico {
+    height: 40px;
+    width: 40px;
+    padding: 5px 0;
+    text-align: center;
+    line-height: 40px;
+}
+
+.header .header-ico img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
+.header .header-empty {
+    flex: 1;
+}
+
+.header .header-operate {
+    display: flex;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .header-operate span {
+    width: 30px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+.header .header-operate:hover span {
+    color: #fff;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.main .box-container {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: auto auto;
+    line-height: 200px;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    color: red;
+    font-size: 44px;
+}
+
+.main .box-button {
+    margin-top: 20px;
+}
+
+.main .btn {
+    height: 32px;
+    padding: 0 15px;
+    outline: none;
+    border-color: #1890ff;
+    background-color: #1890ff;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: none;
+    cursor: pointer;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    font-size: 14px;
+    border-radius: 4px;
+}

@@ -13,12 +13,11 @@ const createWindow = function () {
     })
 
     if (isDev) {
-        mainWindow.loadURL('http://localhost:8080')
+        mainWindow.loadURL('http://localhost:8080/')
     } else {
         mainWindow.loadFile('index.html')
     }
 }
-
 
 function send(channel, ...args){
     mainWindow.webContents.send(channel, ...args)
