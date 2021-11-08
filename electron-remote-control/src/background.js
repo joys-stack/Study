@@ -16,6 +16,8 @@ app.on('ready', () => {
 
     // 处理IPC通信
     handleIPC()
+    // 键盘处理
+    require('./main/robot.js')()
 })
 
 app.on('window-all-closed', () => {
