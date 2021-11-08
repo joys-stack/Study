@@ -1,25 +1,37 @@
-const { BrowserWindow } = require('electron')
+const {
+    BrowserWindow
+} = require('electron')
 const isDev = require('electron-is-dev')
 
-let mainWindow
-const createWindow = function () {
-    mainWindow = new BrowserWindow({
-        height: 400,
-        width: 400,
+let win
+const createWindow = function (option, url) {
+    win = new BrowserWindow({
+        ...option,
+        frame: false,
+        show: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
         }
     })
 
+    // 渲染进程加载完毕，显示窗口
+    win.once('ready-to-show', () => {
+        win.show()
+    })
+
     if (isDev) {
-        mainWindow.loadURL('http://localhost:8080/')
+        win.loadURL(url)
     } else {
-        mainWindow.loadFile('index.html')
+        win.loadFile('index.html')
     }
+    return win
 }
 
-function send(channel, ...args){
-    mainWindow.webContents.send(channel, ...args)
+function send(channel, ...args) {
+    win.webContents.send(channel, ...args)
 }
-module.exports = { createWindow, send }
+module.exports = {
+    createWindow,
+    send
+}

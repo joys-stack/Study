@@ -1,9 +1,5 @@
-// import Vue from 'vue'
 import {createRouter, createWebHistory } from 'vue-router'
 
-/* console.log(Vue)
-console.log(VueRouter)
-Vue.use(VueRouter) */
 const router = createRouter({
     history: createWebHistory(),
     routes: [{

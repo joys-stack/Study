@@ -1,17 +1,46 @@
-const { ipcMain } = require('electron')
-const { send: sendMainWindow } = require('./window')
-const { create: createControlWindow } = require('./control')
+const {
+    ipcMain,
+    BrowserWindow
+} = require('electron')
+const {
+    createWindow
+} = require('./window')
 
 module.exports = function () {
+    // 登录通信
     ipcMain.handle('IPCLogin', async () => {
         // 先mock，返回一个Code
         let code = Math.floor(Math.random() * (999999 - 100000)) + 100000
         return code
     })
 
-    ipcMain.on('control', async (e, remoteCode) => {
+    // Toolbar通信
+    ipcMain.on('IPCToolbar', (e, v) => {
+        // 获取当前操作的窗口
+        const win = BrowserWindow.getFocusedWindow()
+        if (v === 'Min') {
+            win.minimize()
+        } else if (v === 'Close') {
+            win.webContents.send('control-state-change', '', '')
+            win.close()
+        } else if (v === 'Max') {
+            if (win.isMaximized()) {
+                win.unmaximize()
+            } else {
+                win.maximize()
+            }
+        }
+    })
+
+    ipcMain.on('IPCRemoteControl', async (e, remoteCode) => {
         // 这里跟服务端交互，现在 mock返回
-        sendMainWindow('control-state-change', remoteCode, '1')
-        createControlWindow()
+        /* sendMainWindow('control-state-change', remoteCode, '1') */
+        // 获取当前操作的窗口
+        const win = BrowserWindow.getFocusedWindow()
+        win.webContents.send('control-state-change', remoteCode, '1')
+        createWindow({
+            height: 680,
+            width: 1000
+        }, 'http://localhost:8080/control')
     })
 }
