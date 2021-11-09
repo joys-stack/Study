@@ -58,7 +58,9 @@ export default {
 <style lang="css" scoped>
 .header {
   height: 34px;
+  cursor: move;
   -webkit-app-region: drag;
+  background-color: #fff;
 }
 
 .header ul {

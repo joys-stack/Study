@@ -18,16 +18,18 @@ module.exports = function () {
     ipcMain.on('IPCToolbar', (e, v) => {
         // 获取当前操作的窗口
         const win = BrowserWindow.getFocusedWindow()
-        if (v === 'Min') {
-            win.minimize()
-        } else if (v === 'Close') {
-            win.webContents.send('control-state-change', '', '')
-            win.close()
-        } else if (v === 'Max') {
-            if (win.isMaximized()) {
-                win.unmaximize()
-            } else {
-                win.maximize()
+        if (win) {
+            if (v === 'Min') {
+                win.minimize()
+            } else if (v === 'Close') {
+                win.webContents.send('control-state-change', '', '')
+                win.close()
+            } else if (v === 'Max') {
+                if (win.isMaximized()) {
+                    win.unmaximize()
+                } else {
+                    win.maximize()
+                }
             }
         }
     })
@@ -38,9 +40,11 @@ module.exports = function () {
         // 获取当前操作的窗口
         const win = BrowserWindow.getFocusedWindow()
         win.webContents.send('control-state-change', remoteCode, '1')
-        createWindow({
+        let w = createWindow({
             height: 680,
-            width: 1000
+            width: 1000,
+            transparent: true
         }, 'http://localhost:8080/control')
+        w.webContents.openDevTools()
     })
 }

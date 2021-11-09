@@ -1,5 +1,7 @@
-const { ipcMain } = require('electron')
-const robot = require('robot')
+const {
+    ipcMain
+} = require('electron')
+const robot = require('robotjs')
 const vkey = require('vkey')
 
 function handleMouse(data) {
@@ -7,7 +9,7 @@ function handleMouse(data) {
     let x = data.clientX * data.screen.width / data.video.width
     let y = data.clientY * data.screen.height / data.video.height
     robot.moveMouse(x, y)
-    robot.mouseClick()
+    robot.mouseClick(data.button)
 }
 
 function handleKey(data) {
@@ -18,10 +20,15 @@ function handleKey(data) {
     if (data.alt) modifiers.push('alt')
     if (data.ctrl) modifiers.push('ctrl')
     let key = vkey[data.keyCode].toLowerCase()
-    robot.keyTap(key, modifiers)
+    console.log(data)
+    console.log(modifiers)
+    console.log(key)
+    if (!key.startsWith('<')) {
+        robot.keyTap(key, modifiers)
+    }
 }
 
-module.export = function () {
+module.exports = function () {
     ipcMain.on('robot', (e, type, data) => {
         if (type === 'mouse') {
             handleMouse(data)

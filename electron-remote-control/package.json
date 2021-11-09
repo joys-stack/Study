@@ -6,13 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start:main": "electron .",
+    "start:main": "electron . --inspect-brk=5858",
     "start": "concurrently \"npm run serve\" \"wait-on http://localhost:8080 && npm run start:main\""
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "robotjs": "^0.6.0",
+    "vkey": "^1.0.1",
     "vue": "^3.0.0",
-    "vue-router": "^3.5.3"
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,9 +25,9 @@
     "concurrently": "^6.3.0",
     "electron": "^15.3.0",
     "electron-is-dev": "^2.0.0",
+    "electron-rebuild": "^3.2.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "vue-router": "^4.0.12",
     "wait-on": "^6.0.0"
   },
   "main": "./src/background.js",

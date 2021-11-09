@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <div
+    class="control"
+    ref="ControlRef"
+  >
     <Header ref="HeaderRef"></Header>
-    <video ref="VideoRef"></video>
+    <video
+      ref="VideoRef"
+      style="width:100%;height:100%;object-fit:fill;"
+    ></video>
   </div>
 </template>
 <script>
 import Header from "./Header.vue";
-const peer = require("../main/peer-control");
+const { peer } = require("../main/peer-control");
 export default {
   name: "Control",
   components: {
@@ -17,8 +23,13 @@ export default {
     peer.on("add-stream", (stream) => {
       this.play(stream);
     });
-    window.addEventListener("keydown", this.onKeyDown);
-    window.addEventListener("mouseup", this, this.onMouseUp);
+    this.$nextTick(() => {
+      // this.$refs.ControlRef.addEventListener("keydown", this.onKeyDown);
+      window.addEventListener("keydown", this.onKeyDown)
+      this.$refs.ControlRef.addEventListener("mouseup", this.onMouseUp);
+    })
+    /* ;
+    window.addEventListener("mouseup", this.onMouseUp); */
   },
   methods: {
     // 初始化 ToolBar
@@ -49,24 +60,42 @@ export default {
         keyCode: e.keyCode,
         shift: e.shiftKey,
         meta: e.metaKey,
-        control: e.ctrlKey,
+        ctrl: e.ctrlKey,
         alt: e.altKey,
       };
       peer.emit("robot", "key", data);
     },
     onMouseUp(e) {
+      let button = 'left'
+      const mouseType = e.button + 1 || e.which
+      if (mouseType == 1) {
+        button = 'left';
+      } else if (mouseType == 2) {
+        button = 'middle';
+      } else if (mouseType == 3) {
+        button = 'right';
+      }
+      const videoRef = this.$refs.VideoRef
       let data = {
         clientX: e.clientX,
         clientY: e.clientY,
-        vide: {
-          width: this.$refs.VideoRef.getBoundingClientRect().width,
-          height: this.$refs.VideoRef.getBoundingClientRect().height,
+        video: {
+          width: videoRef.getBoundingClientRect().width,
+          height: videoRef.getBoundingClientRect().height,
         },
+        button
       };
+      console.log(data)
       peer.emit("robot", "mouse", data);
     },
   },
 };
 </script>
 <style lang="css" scoped>
+.control {
+  /* margin: 5px; */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 5px;
+}
 </style>
