@@ -5,7 +5,7 @@ const {
 
 // 获取数据
 async function getData() {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         const result = await readFile()
         resolve(result)
     })

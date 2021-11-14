@@ -1,6 +1,6 @@
-{
+[{
     "ClientIP": "192.1.1.141",
     "ClientPort": "8099",
     "ClientUser": "BIS",
     "ClientPassword": "123456"
-}
+}]
