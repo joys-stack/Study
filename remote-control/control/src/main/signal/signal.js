@@ -11,7 +11,6 @@ ws.onopen = () => {
 // 监听消息
 ws.onmessage = (e => {
     let data = {}
-    console.log(e.data)
     try {
         data = JSON.parse(e.data)
     } catch (error) {

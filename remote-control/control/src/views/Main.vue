@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      Clients: [{ ClientIP: "192.1.1.141" }, { ClientIP: "192.168.5.15" }],
+      Clients: [{ ClientIP: "127.0.0.1" }, { ClientIP: "192.168.5.15" }],
     };
   },
   mounted() {
@@ -63,7 +63,7 @@ export default {
     },
     // 开始远程
     startControl() {
-      ipcRenderer.send("IPCRemoteControl", { ClientIP: "192.168.5.15" });
+      ipcRenderer.send("IPCRemoteControl", { ClientIP: "127.0.0.1" });
     },
   },
 };

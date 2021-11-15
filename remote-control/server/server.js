@@ -1,4 +1,4 @@
-const WebSocket = require('ws')
+﻿const WebSocket = require('ws')
 const { getData } = require('./api')
 const { getMD5 } = require('./until')
 
@@ -29,13 +29,13 @@ wss.on('connection', async (ws, request) => {
     if (request.url === '/control') {
         // 连接成功，返回所有可远程的客户端
         const arr = []
-        console.log(controlRelMap.keys())
         for (let key of controlRelMap.keys()) {
             arr.push(controlRelMap.get(key).client)
         }
         setTimeout(() => {
             ws.sendData('connection-success', arr)
         }, 5000)
+        console.log(`control：${IP}`)
 
     } else if (request.url === '/puppet') {
         const obj = {
@@ -47,6 +47,7 @@ wss.on('connection', async (ws, request) => {
             ws,
             client: obj
         })
+        console.log(`puppet：${IP}`)
     }
 
     // 监听消息
