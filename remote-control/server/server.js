@@ -80,7 +80,7 @@ wss.on('connection', async (ws, request) => {
             }
 
             // 控制端与傀儡端的信息转发
-            if (event === 'control-to-puppet') {
+            if (event === 'forward') {
                 ws.sendRemote(data.event, data.data)
             }
         } catch (error) {

@@ -38,11 +38,11 @@ function handleIPC() {
         // 登录验证
         const result = await signal.invoke('control-login', data, 'login')
         if (result.isSuccess) {
+            createWindow()
             console.log('登陆成功')
         } else {
             console.log('登陆失败')
         }
-        createWindow()
     })
 
     signal.on('connection-success', data => {
