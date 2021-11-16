@@ -6,11 +6,6 @@ const router = createRouter({
             path: '/',
             name: 'Main',
             component: import( /* webpackChunkName: "group-foo" */ '../views/Main.vue')
-        },
-        {
-            path: '/control',
-            name: 'Control',
-            component: import( /* webpackChunkName: "group-foo" */ '../views/Control.vue')
         }
     ]
 })

@@ -1,6 +1,12 @@
-const { app } = require('electron')
-const { creatWindow } = require('./main/window/puppet')
-const handleIPC = require('./main/utils/ipc')
+const {
+    app
+} = require('electron')
+const {
+    creatWindow
+} = require('./main/window/puppet')
+const {
+    handleIPC
+} = require('./main/utils/ipc')
 
 // 声明周期
 app.on('ready', function () {
@@ -14,7 +20,6 @@ app.on('ready', function () {
     } catch (error) {
         console.log(error)
     }
-    console.log(123)
 })
 
 app.on('window-all-closed', () => {
@@ -22,4 +27,3 @@ app.on('window-all-closed', () => {
         app.exit()
     }
 })
-

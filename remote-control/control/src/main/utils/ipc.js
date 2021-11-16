@@ -1,7 +1,15 @@
-const { ipcMain, BrowserWindow } = require('electron')
+const {
+    ipcMain,
+    BrowserWindow
+} = require('electron')
 
-const { send: sendControl } = require('../window/control')
-const { createWindow } = require('../window/control-view')
+const {
+    send: sendControl
+} = require('../window/control')
+const {
+    createWindow,
+    send: sendControlView
+} = require('../window/control-view')
 const signal = require('../signal/signal')
 
 function handleIPC() {
@@ -20,6 +28,8 @@ function handleIPC() {
                 } else {
                     win.maximize()
                 }
+            } else if (v === 'Hide') {
+                win.hide()
             }
         }
     })
@@ -29,7 +39,7 @@ function handleIPC() {
         const result = await signal.invoke('control-login', data, 'login')
         if (result.isSuccess) {
             console.log('登陆成功')
-        }else {
+        } else {
             console.log('登陆失败')
         }
         createWindow()
@@ -37,6 +47,11 @@ function handleIPC() {
 
     signal.on('connection-success', data => {
         sendControl('connection-success', data)
+    })
+
+    signal.on('answer', data => {
+        console.log('answer：' + data)
+        sendControlView('answer', data)
     })
 }
 

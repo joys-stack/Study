@@ -20,21 +20,9 @@ ws.onmessage = (e => {
 })
 
 // 发送消息
-/* function send(event, data) {
+function send(event, data) {
     ws.send(JSON.stringify({ event, data }))
 }
 
-// 登录处理
-function invoke(event, data, answerEvent) {
-    return new Promise((resolve, reject) => {
-        send(event, data)
-        signal.once(answerEvent, resolve)
-        setTimeout(() => {
-            reject('Time out')
-        }, 5000)
-    })
-} */
-
-/* signal.send = send
-signal.invoke = invoke */
+signal.send = send
 module.exports = signal

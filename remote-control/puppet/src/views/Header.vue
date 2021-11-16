@@ -19,7 +19,7 @@
             :key="index"
             :name="item.name"
             :title="item.title"
-            :class="[item.name === 'Close'? 'header-hover':'', `icon-${item.name === 'Max'? (isMax ?`un${item.ico}`: item.ico): item.ico}`]"
+            :class="[(item.name === 'Close' || item.name==='Hide')? 'header-hover':'', `icon-${item.name === 'Max'? (isMax ?`un${item.ico}`: item.ico): item.ico}`]"
           >
           </li>
         </ul>

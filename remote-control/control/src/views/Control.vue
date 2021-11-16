@@ -12,7 +12,7 @@
 </template>
 <script>
 import Header from "./Header.vue";
-const { peer } = require("../main/peer-control");
+const { peer } = require("../main/utils/peer-control");
 export default {
   name: "Control",
   components: {
@@ -85,7 +85,6 @@ export default {
         },
         button
       };
-      console.log(data)
       peer.emit("robot", "mouse", data);
     },
   },

@@ -1,4 +1,9 @@
-const { app, BrowserWindow, Tray, Menu } = require('electron')
+const {
+    app,
+    BrowserWindow,
+    Tray,
+    Menu
+} = require('electron')
 const isDev = require('electron-is-dev')
 
 let win
@@ -7,8 +12,8 @@ const creatWindow = function () {
     win = new BrowserWindow({
         frame: false,
         show: false,
-        height: 680,
-        width: 680,
+        height: 330,
+        width: 330,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
@@ -16,7 +21,7 @@ const creatWindow = function () {
     })
 
     win.once('ready-to-show', () => {
-        win.show()
+        win.hide()
     })
 
     // 判断当前程序是否开发程序
@@ -26,18 +31,25 @@ const creatWindow = function () {
 
     // 托盘菜单
     tray = new Tray(`${__dirname}/puppet.ico`)
-    const items = [
-        {
-            label: '设置', 
+    const items = [{
+            label: '设置',
+            click: () => {
+
+            }
+        }, {
+            label: '关于',
             click: () => {
 
             }
         },
-        { type: 'separator' },
+        {
+            type: 'separator'
+        },
         {
             label: '退出',
             icon: `${__dirname}/exit.png`,
             click: () => {
+                tray = null
                 app.quit()
             }
         }
@@ -45,8 +57,20 @@ const creatWindow = function () {
     const contextMenu = Menu.buildFromTemplate(items)
     tray.setToolTip('傀儡端')
     tray.setContextMenu(contextMenu)
+
+    tray.on("double-click", () => {
+        win.show()
+    })
     // 托盘
     return win
 }
 
-module.exports = { creatWindow }
+// IPC通信
+function send(event, data) {
+    win.webContents.send(event, data)
+}
+
+module.exports = {
+    creatWindow,
+    send
+}

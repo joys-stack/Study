@@ -28,6 +28,12 @@ const createWindow = function () {
     return win
 }
 
+// IPC通信
+function send(event, data){
+    win.webContents.send(event, data)
+}
+
 module.exports = {
-    createWindow
+    createWindow,
+    send
 }
