@@ -20,6 +20,9 @@ export default {
   },
   mounted() {
     this.InitToolBar();
+    // 开始创建offer
+    peer.create()
+
     peer.on("add-stream", (stream) => {
       this.play(stream);
     });

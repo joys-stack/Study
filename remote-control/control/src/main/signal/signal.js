@@ -25,7 +25,10 @@ ws.onclose = () => {
 
 // 发送消息
 function send(event, data) {
-    ws.send(JSON.stringify({ event, data }))
+    ws.send(JSON.stringify({
+        event,
+        data
+    }))
 }
 
 // 登录处理

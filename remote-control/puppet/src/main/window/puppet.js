@@ -14,6 +14,7 @@ const creatWindow = function () {
         show: false,
         height: 330,
         width: 330,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
@@ -23,10 +24,10 @@ const creatWindow = function () {
     win.once('ready-to-show', () => {
         win.hide()
     })
-
+    console.log(isDev)
     // 判断当前程序是否开发程序
     if (isDev) {
-        win.loadURL('http://localhost:8080/')
+        win.loadURL('http://localhost:8081/')
     }
 
     // 托盘菜单

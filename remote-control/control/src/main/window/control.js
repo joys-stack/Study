@@ -18,7 +18,6 @@ const creatWindow = function () {
 
     win.once('ready-to-show', () => {
         win.show()
-        win.webContents.openDevTools()
     })
 
     // 判断当前程序是否开发程序
@@ -52,7 +51,6 @@ const creatWindow = function () {
 }
 
 function send(event, data) {
-    console.log(data)
     win.webContents.send(event, data)
 }
 

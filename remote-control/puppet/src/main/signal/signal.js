@@ -12,7 +12,7 @@ ws.onopen = () => {
 ws.onmessage = (e => {
     let data = {}
     try {
-        data = JSON.parse(e)
+        data = JSON.parse(e.data)
     } catch (error) {
         console.log(error)
     }

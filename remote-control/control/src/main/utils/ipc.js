@@ -37,21 +37,36 @@ function handleIPC() {
     ipcMain.on('IPCRemoteControl', async (e, data) => {
         // 登录验证
         const result = await signal.invoke('control-login', data, 'login')
-        if (result.isSuccess) {
+        console.log(result)
+        if (result.isSuccesss) {
             createWindow()
-            console.log('登陆成功')
         } else {
             console.log('登陆失败')
         }
     })
 
-    signal.on('connection-success', data => {
-        sendControl('connection-success', data)
+    ipcMain.on('IPCForward', (e, v) => {
+        signal.send('forward', v)
     })
 
-    signal.on('answer', data => {
-        console.log('answer：' + data)
-        sendControlView('answer', data)
+    ipcMain.on('IPCControlCandidate', (e, event, data) => {
+        console.log(event, data)
+        signal.send('forward', {
+            event,
+            data
+        })
+    })
+
+    signal.on('connection-success', v => {
+        sendControl('connection-success', v)
+    })
+
+    signal.on('answer', v => {
+        sendControlView('IPCAnswer', v)
+    })
+
+    signal.on('puppet-candidate', v => {
+        sendControlView('IPCCandidate', v)
     })
 }
 

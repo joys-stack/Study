@@ -56,16 +56,19 @@ wss.on('connection', async (ws, request) => {
                 event,
                 data
             } = message
+            console.log(data.event)
             // 控制端请求消息
             // // 登陆
             if (event === 'control-login') {
-                const ControlCode = getMD5(`http://${data.ClientIP}`)
+                const ControlCode = getMD5(`${data.ClientIP}/${data.Model}`)
                 // const isLogined = d.findIndex(item => item.ClientIP === data.ClientIP && item.ClientPort === data.ClientPort && item.ClientUser === data.ClientUser && item.ClientPassword === data.ClientPassword) >= 0
                 if (controlRelMap.has(ControlCode)) {
                     ws.sendData('login', {
                         isSuccesss: true
                     })
-                    ws.sendRemote = controlRelMap.get(ControlCode).ws.sendData
+                    const wsRemote = controlRelMap.get(ControlCode)
+                    ws.sendRemote = wsRemote.sendData
+                    wsRemote.sendRemote = ws.sendData
                 } else {
                     ws.sendData('login', {
                         isSuccesss: false
@@ -88,4 +91,13 @@ wss.on('connection', async (ws, request) => {
             return
         }
     })
+
+    ws.on('close', () => {
+        controlRelMap.delete(key)
+        clearTimeout(ws._closeTimeout);
+    })
+
+    ws._closeTimeout = setTimeout(() => {
+        ws.terminate();
+    }, 600000);
 })

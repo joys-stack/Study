@@ -17,6 +17,7 @@ const createWindow = function () {
 
     win.on('ready-to-show', () => {
         win.show()
+        win.webContents.openDevTools()
     })
 
     win.loadURL('http://localhost:8080/control')

@@ -63,7 +63,7 @@ export default {
     },
     // 开始远程
     startControl() {
-      ipcRenderer.send("IPCRemoteControl", { ClientIP: "127.0.0.1" });
+      ipcRenderer.send("IPCRemoteControl", { ClientIP: "127.0.0.1", Model: 'puppet' });
     },
   },
 };

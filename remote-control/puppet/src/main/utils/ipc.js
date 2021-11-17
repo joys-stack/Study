@@ -32,15 +32,24 @@ function handleIPC() {
         }
     })
 
-    ipcMain.on('IPCForward', data => {
-        console.log('IPCForward: ' + data)
-        signal.send('forward', data)
+    ipcMain.on('IPCForward', (e, v) => {
+        signal.send('forward', v)
+    })
+
+    ipcMain.on('IPCPuppetCandidate', (e, event, data) => {
+        signal.send('forward', {
+            event,
+            data
+        })
     })
 
     // 监听 offer
     signal.on('offer', offer => {
-        console.log('offer: ' + offer)
         puppetSend('IPCOffer', offer)
+    })
+
+    signal.on('control-candidate', v => {
+        puppetSend('IPCCandidate', v)
     })
 }
 
