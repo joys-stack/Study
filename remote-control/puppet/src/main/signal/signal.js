@@ -8,6 +8,10 @@ ws.onopen = () => {
     console.log('连接成功')
 }
 
+ws.onclose = (e) => {
+    console.log(`断开连接：${e.code} ${e.reason} ${e.wasClean}`)
+}
+
 // 监听消息
 ws.onmessage = (e => {
     let data = {}
@@ -21,7 +25,10 @@ ws.onmessage = (e => {
 
 // 发送消息
 function send(event, data) {
-    ws.send(JSON.stringify({ event, data }))
+    ws.send(JSON.stringify({
+        event,
+        data
+    }))
 }
 
 signal.send = send

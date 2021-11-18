@@ -58,7 +58,7 @@ ipcRenderer.on('IPCOffer', async (e, offer) => {
     pc.onicecandidate = (e) => {
         if (e.candidate) {
             // 告知其他人
-            const data = {
+            /* const data = {
                 address: e.candidate.address,
                 candidate: e.candidate.candidate,
                 component: e.candidate.component,
@@ -73,14 +73,14 @@ ipcRenderer.on('IPCOffer', async (e, offer) => {
                 tcpType: e.candidate.tcpType,
                 type: e.candidate.type,
                 usernameFragment: e.candidate.usernameFragment
-            }
-            console.log(data)
+            } */
+            const data = e.candidate.toJSON()
             ipcRenderer.send('IPCPuppetCandidate', 'puppet-candidate', data)
         }
     }
 
     async function addIceCandidate(candidate) {
-        if (!candidate || !candidate.type) return
+        if (!candidate) return
         await pc.addIceCandidate(new RTCIceCandidate(candidate))
     }
 

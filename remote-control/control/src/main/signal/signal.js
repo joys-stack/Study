@@ -19,8 +19,8 @@ ws.onmessage = (e => {
     signal.emit(data.event, data.data)
 })
 
-ws.onclose = () => {
-    console.log('close')
+ws.onclose = (e) => {
+    console.log(`断开连接：${e.code} ${e.reason} ${e.wasClean}`)
 }
 
 // 发送消息

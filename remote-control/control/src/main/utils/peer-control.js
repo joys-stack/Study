@@ -19,13 +19,11 @@ async function createOffer() {
 
 // 监听返回的 answer
 ipcRenderer.on('IPCAnswer', (e, answer) => {
-    console.log(answer)
     pc.setRemoteDescription(answer)
 })
 
 // 视频流
 pc.onaddstream = e => {
-    console.log(e)
     peer.emit('add-stream', e.stream)
 }
 
@@ -44,7 +42,7 @@ peer.create = function () {
 
 pc.onicecandidate = e => {
     if (e.candidate) {
-        const data = {
+        /* const data = {
             address: e.candidate.address,
             candidate: e.candidate.candidate,
             component: e.candidate.component,
@@ -59,8 +57,10 @@ pc.onicecandidate = e => {
             tcpType: e.candidate.tcpType,
             type: e.candidate.type,
             usernameFragment: e.candidate.usernameFragment
-        }
-        console.log(data)
+        } */
+        console.log(e.candidate.toJSON())
+        const data = e.candidate.toJSON()
+
         ipcRenderer.send('IPCControlCandidate', 'control-candidate', data)
     }
 }
@@ -71,7 +71,8 @@ ipcRenderer.on('IPCCandidate', (e, candidate) => {
 
 let candidates = []
 async function addIceCandidate(candidate) {
-    if (!candidate || !candidate.type) return
+    // || !candidate.type
+    if (!candidate) return
     candidates.push(candidate)
     if (pc.remoteDescription && pc.remoteDescription.type) {
         for (let i = 0; i < candidates.length; i++) {

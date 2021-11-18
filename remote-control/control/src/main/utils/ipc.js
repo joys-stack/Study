@@ -50,7 +50,6 @@ function handleIPC() {
     })
 
     ipcMain.on('IPCControlCandidate', (e, event, data) => {
-        console.log(event, data)
         signal.send('forward', {
             event,
             data
