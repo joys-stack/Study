@@ -1,0 +1,36 @@
+/* 型号函数 */
+.model(h, fs) {
+    height: h;
+    font-size: fs;
+}
+
+.ex-button {
+    outline: none;
+    display: inline-block;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+
+    &--large {
+        .model(40px, 16px);
+        padding: 0 16px;
+    }
+
+    &--round {
+        border-radius: 50%;
+    }
+
+    &--circle {
+        border-radius: 50%;
+        min-width: 32px;
+        padding: 0;
+        text-align: center;
+    }
+}
