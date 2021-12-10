@@ -1,0 +1,178 @@
+/* 设置全局的滚动条样式 */
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 10px !important;
+}
+
+::-webkit-scrollbar-::-webkit-scrollbar-track {
+    background: #fff !important;
+    border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(193, 193, 193) !important;
+    border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #747474 !important;
+}
+
+::-webkit-scrollbar-corner {
+    background: #fff !important;
+}
+
+/* 全局弹窗动画 */
+.common .animated {
+    animation-name: popup-animated;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes popup-animated {
+    0% {
+        opacity: 0.3;
+        -ms-transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        -moz-transform: scale(0.3);
+        -o-transform: scale(0.3);
+        transform: scale(0.3);
+    }
+
+    100% {
+        opacity: 1;
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+/* 面包屑动画 */
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+    transition: all .5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.breadcrumb-move {
+    transition: all .5s;
+}
+
+.breadcrumb-leave-active {
+    position: absolute;
+}
+
+/* ant-design 样式调整 */
+.common .ant-card {
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.common .ant-card-body {
+    padding: 8px;
+}
+
+.common .ant-table-thead>tr>th,
+.common .ant-table-tbody>tr>td {
+    padding: 6px;
+}
+
+.common .ant-table-thead>tr>th {
+    text-align: center !important;
+}
+
+.common .card-header {
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.common .card-header .ant-form-item {
+    margin-right: 10px;
+}
+
+.common .card-content {
+    margin-top: 5px;
+}
+
+.common .common-pagination {
+    margin-top: 10px;
+    padding-top: 10px;
+    background-color: #fff;
+    width: 100%;
+    border-top: 1px solid #e8e8e8;
+}
+
+.common .ant-table-wrapper {
+    position: relative;
+}
+
+.common .ant-table-placeholder {
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    border: 0 !important;
+}
+
+.common .base-modal .ant-modal-header {
+    background-color: rgb(248, 248, 248);
+    padding: 8px 24px;
+}
+
+.common .base-modal .ant-modal-close-x {
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
+    right: 5px;
+}
+
+.common .ant-avatar {
+    margin-right: 4px;
+}
+
+.common .ant-dropdown-link {
+    color: #595959;
+}
+
+.ant-tooltip {
+    max-width: 700px !important;
+}
+
+/* 通用的操作，ABO颜色、RhD颜色等的样式 */
+.common .error {
+    color: #f00;
+}
+
+.common .ABO {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.common .RhD {
+    font-size: 12px;
+}
+
+.ant-notification-notice-description h1 {
+    font-size: 18px;
+    color: red;
+    font-weight: 700;
+}
+
+.ant-notification-notice-description p {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ant-divider-horizontal {
+    margin: 18px 0;
+}
+
+/* .ant-popover-inner-content {
+  padding: 0 !important;
+} */

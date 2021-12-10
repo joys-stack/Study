@@ -1,0 +1,123 @@
+@import "~ant-design-vue/lib/style/index";
+
+/* 菜单栏激活样式 */
+.ant-menu-root>.ant-menu-submenu-selected::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 44px;
+    background-color: @primary-color;
+    transition: height .4s;
+}
+
+.ant-menu-root>.ant-menu-submenu-selected::before:hover {
+    height: 44px;
+}
+
+/* 路由请求加载条样式 */
+#nprogress .bar {
+    height: 3px !important;
+    background-color: @primary-color  !important;
+}
+
+/* 主题选择时，边框的样式*/
+.check {
+    border: 1px solid @primary-color;
+}
+
+.operate {
+    color: @primary-color;
+    margin: 0 10px;
+}
+
+.no-operate {
+    color: rgba(0, 0, 0, .5);
+    margin: 0 10px;
+}
+
+.no-operate:hover {
+    cursor: url(../assets/images/forbidden.png), pointer;
+}
+
+.operate .span,
+.no-operate .span {
+    padding: 0 5px;
+}
+
+.operate:hover {
+    cursor: pointer;
+}
+
+/* 来电咨询项目样式 */
+.consulting-item li:hover i {
+    color: @primary-color  !important;
+    transition: color .5s ease;
+}
+
+.consulting-item .active i {
+    color: @primary-color  !important;
+}
+
+.consulting-item li:hover span {
+    color: @primary-color  !important;
+    transition: color .5s ease;
+}
+
+.consulting-item .active span {
+    color: @primary-color  !important;
+}
+
+.ring {
+    background-color: @primary-color;
+}
+
+/* 自定义主题样式 */
+/* 主题一：黑色主题 */
+.theme-dark .ant-layout-sider,
+.theme-dark .ant-menu {
+    background-color: #001529 !important;
+}
+
+.theme-dark .ant-menu-sub {
+    background-color: #000c17 !important;
+}
+
+/* 主题二：暖色主题 */
+.theme-warm .ant-layout-sider,
+.theme-warm .ant-menu {
+    background-color: #191a23 !important;
+}
+
+.theme-warm .ant-menu-sub {
+    background-color: #000c17 !important;
+}
+
+/* 主题三： 酱紫主题*/
+.theme-purple .ant-layout-sider,
+.theme-purple .ant-menu {
+    background-color: #22075e !important;
+}
+
+.theme-purple .ant-menu-sub {
+    background-color: #120338 !important;
+}
+
+/* 主题四：浅蓝色主题 */
+.theme-blue .ant-layout-sider,
+.theme-blue .ant-menu {
+    background-color: #00426b !important;
+}
+
+.theme-blue .ant-menu-sub {
+    background-color: #002845 !important;
+}
+
+/* 勾选下拉框的样式 */
+.select-list li:hover {
+    /* background-color: @primary-color; */
+}
+
+.common-table .table-row-active {
+    background-color: rgba(254, 254, 251, 0.2) !important;
+}

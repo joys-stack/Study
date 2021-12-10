@@ -1,0 +1,13 @@
+{
+    "PublicUrl":"http://192.1.1.214:8098/",
+    "FinUrl":"http://192.1.1.214:8093/",
+    "AccessKey": "8fiz650uM9M=",
+    "AccessKeySecret": "ZXzrkmYGJ1wNtKgEydN0l0tk6HtjG/8m",
+    "AesKey": "8fiz650uM9M=",
+    "ThrottleDelay" : 400,
+    "LockDelay": 9000000,
+    "InstBTSID": 1,
+    "FVersion": "Copyright © 2021, 智慧财务信息化平台 V1.0.0_20211027 All rights reserved. 浙江省血液中心",
+    "LVersion": "Copyright © 2021, 智慧后勤信息化平台 V1.0.0_20211027 All rights reserved. 浙江省血液中心",
+    "OVersion": "Copyright © 2021, 行政办公信息化平台 V1.0.0_20211027 All rights reserved. 浙江省血液中心"
+}
