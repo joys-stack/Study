@@ -9,3 +9,6 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+@import url(./style/icon.less);
+</style>

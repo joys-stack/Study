@@ -26,9 +26,16 @@ module.exports = {
             use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
         }, {
             test: /\.(ttf|eot|svg|woff)$/,
-            type: 'asset/resource',
+            type: 'asset',
+            // 生成打包文件的位置
             generator: {
-                filename: 'statics/font/[name].[hash:4][ext]'
+                filename: 'img/[name].[hash:6][ext]'
+            },
+            // 相当于 limit的设置
+            parser: {
+                dataUrlCondition: {
+                    maxSize: 25 * 1024
+                }
             }
         }, {
             test: /\.js$/,

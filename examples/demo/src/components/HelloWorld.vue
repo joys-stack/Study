@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <ex-icon type="newspaper"></ex-icon>
-    <ex-button @click="onClick">点击</ex-button>
+    <ex-icon type="office"></ex-icon>
+    <ex-button @click="onClick" size="large" type="primary" :loading="true">加载中...</ex-button>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     onClick(e) {
-      alert('点击了')
+      console.dir(e)
     }
   }
 }
