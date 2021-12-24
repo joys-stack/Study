@@ -1,0 +1,107 @@
+@import url(./common/variable.less);
+
+[class*='ex-col-'] {
+    float: left;
+    box-sizing: border-box;
+}
+
+// 当 span属性设置为0，不显示
+.ex-col-span-0 {
+    display: 0;
+}
+
+// 总份数
+@Num: 24;
+
+// 默认样式
+each(range(0, 24, 1), {
+        .ex-col-span-@{value} {
+            width: (@value / @Num * 100) * 1%;
+        }
+
+        .ex-col-offset-@{value} {
+            margin-left: (@value / @Num * 100) * 1%;
+        }
+
+        .ex-col-pull-@{value} {
+            position: relative;
+            right: (@value / @Num * 100) * 1%;
+        }
+
+        .ex-col-push-@{value} {
+            position: relative;
+            left: (@value / @Num * 100) * 1%;
+        }
+    }
+
+) // 定义生成媒体查询的函数
+
+.media(@--type) {
+
+    each(range(0, 24, 1), {
+            .ex-col-span-@{--type}-@{value} {
+                width: (@value / @Num * 100) * 1%;
+            }
+
+            .ex-col-offset-@{--type}-@{value} {
+                margin-left: (@value / @Num * 100) * 1%;
+            }
+
+            .ex-col-pull-@{--type}-@{value} {
+                position: relative;
+                right: (@value / @Num * 100) * 1%;
+            }
+
+            .ex-col-push-@{--type}-@{value} {
+                position: relative;
+                left: (@value / @Num * 100) * 1%;
+            }
+        }
+
+    )
+}
+
+// 媒体查询型号
+@sizeList: xs, sm, md, lg, xl, xxl;
+
+each(@sizeList, {
+        .mexia-mix(@--type) when (@--type=xs) {
+            @media only screen and (max-width: 575px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@--type) when (@--type=sm) {
+            @media only screen and (min-width: 576px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@--type) when (@--type=md) {
+            @media only screen and (min-width: 768px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@--type) when (@--type=lg) {
+            @media only screen and (min-width: 992px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@--type) when (@--type=xl) {
+            @media only screen and (min-width: 1200px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@--type) when (@--type=xxl) {
+            @media only screen and (min-width: 1600px) {
+                .media(@--type);
+            }
+        }
+
+        .mexia-mix(@value)
+    }
+
+)

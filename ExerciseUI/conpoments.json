@@ -1,3 +1,6 @@
 {
-    "button": "./conpoments/button/index.js"
+    "button": "../conpoments/button/index.js",
+    "col": "../conpoments/col/index.js",
+    "icon": "../conpoments/icon/index.js",
+    "row": "../conpoments/row/index.js"
 }

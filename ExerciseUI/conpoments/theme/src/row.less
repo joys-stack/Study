@@ -1,0 +1,54 @@
+.ex-row {
+    position: relative;
+    box-sizing: border-box;
+
+    // 清除浮动
+    &::before,
+    &::after {
+        display: table;
+        content: "";
+    }
+
+    &::after {
+        clear: both;
+    }
+
+    // flex布局
+    &--flex {
+        display: flex;
+        flex-direction: row;
+
+        // 不明白这个样式的含义
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        // 横轴
+        @HList: flex-start, flex-end, center, space-around, space-between;
+        // 纵轴
+        @VList: flex-start, flex-end, center, stretch;
+
+        // 横轴样式
+        each(@HList, {
+                &.ex-row--h-@{value} {
+                    justify-content: @value;
+                }
+            }
+
+        ) // 纵轴样式
+
+        each(@VList, {
+                &.ex-row--v-@{value} {
+                    align-items: @value;
+                }
+            }
+
+        )
+    }
+
+    // grid布局 暂不支持 TODO
+    &--grid{
+
+    }
+}

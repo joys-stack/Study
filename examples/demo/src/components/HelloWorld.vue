@@ -1,7 +1,30 @@
 <template>
   <div class="hello">
-    <ex-icon type="office"></ex-icon>
-    <ex-button @click="onClick" size="large" type="primary" :loading="true">加载中...</ex-button>
+    <ex-icon type="loading"></ex-icon>
+    <ex-button
+      @click="onClick"
+      type="plain"
+      size="medium"
+      :loading="false"
+    >朴素</ex-button>
+    <ex-button
+      @click="onClick"
+      type="primary"
+      size="medium"
+      :loading="false"
+    >点击</ex-button>
+    <ex-button
+      @click="onClick"
+      type="success"
+      size="medium"
+      :loading="false"
+    >点击</ex-button>
+    <ex-button
+      @click="onClick"
+      type="warning"
+      size="medium"
+      :loading="false"
+    >点击</ex-button>
   </div>
 </template>
 
@@ -21,18 +44,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.hello {
+  height: 100%;
 }
 </style>

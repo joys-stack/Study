@@ -1,0 +1,102 @@
+// Border
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-color-base: #DCDFE6;
+@border-radius-base: 4px;
+@border-color-lighter: #EBEEF5;
+@border-base: @border-width-base @border-style-base @border-color-base;
+
+// Color
+@color-white: #FFFFFF;
+@color-black: #000000;
+@color-primary: #409EFF;
+// 根据 color-primary主颜色计算其他色系
+@color-primary-light-1: mix(@color-white, @color-primary, 10%);
+@color-primary-light-2: mix(@color-white, @color-primary, 20%);
+@color-primary-light-3: mix(@color-white, @color-primary, 30%);
+@color-primary-light-4: mix(@color-white, @color-primary, 40%);
+@color-primary-light-5: mix(@color-white, @color-primary, 50%);
+@color-primary-light-6: mix(@color-white, @color-primary, 60%);
+@color-primary-light-7: mix(@color-white, @color-primary, 70%);
+@color-primary-light-8: mix(@color-white, @color-primary, 80%);
+@color-primary-light-9: mix(@color-white, @color-primary, 90%);
+@color-text-regular: #606266;
+@color-text-placeholder: #C0C4CC;
+
+@color-success: #67C23A;
+@color-warning: #E6A23C;
+@color-danger: #F56C6C;
+@color-info: #909399;
+
+// Font
+@font-weight-primary: 500;
+@font-size-base: 14px;
+
+// ExButton
+@button-default-background-color: @color-white;
+@button-default-border-color: @border-color-base;
+@button-default-font-color: @color-text-regular;
+
+@button-font-weight: @font-weight-primary;
+@button-padding-vertical: 12px;
+@button-padding-horizontal: 20px;
+@button-font-size: @font-size-base;
+@button-border-radius: @border-radius-base;
+@button-active-shade-percent: 10%;
+@button-hover-tint-percent: 20%;
+
+@button-disabled-font-color: @color-text-placeholder;
+@button-disabled-background-color: @color-white;
+@button-disabled-border-color: @border-color-lighter;
+
+@button-primary-font-color: @color-white;
+@button-primary-background-color: @color-primary;
+@button-primary-border-color: @color-primary;
+
+@button-success-font-color: @color-white;
+@button-success-background-color: @color-success;
+@button-success-border-color: @color-success;
+
+@button-warning-font-color: @color-white;
+@button-warning-background-color: @color-warning;
+@button-warning-border-color: @color-warning;
+
+@button-danger-font-color: @color-white;
+@button-danger-background-color: @color-danger;
+@button-danger-border-color: @color-danger;
+
+@button-info-font-color: @color-white;
+@button-info-background-color: @color-info;
+@button-info-border-color: @color-info;
+
+@button-small-padding-vertical: 9px;
+@button-small-padding-horizontal: 15px;
+@button-small-font-size: @font-size-base -2;
+@button-small-border-radius: @border-radius-base - 1;
+
+@button-medium-padding-vertical: 10px;
+@button-medium-padding-horizontal: 20px;
+@button-medium-font-size: @font-size-base;
+@button-medium-border-radius: @border-radius-base;
+
+@button-large-padding-vertical: 11px;
+@button-large-padding-horizontal: 25px;
+@button-large-font-size: @font-size-base + 2;
+@button-large-border-radius: @border-radius-base + 1;
+
+// Media
+@xs: 575px;
+@sm: 576px;
+@md: 768px;
+@lg: 992px;
+@xl: 1200px;
+@xxl: 1600px;
+
+#breakpoints() {
+    xs: "max-width: @xs";
+    sm: "min-width: @sm";
+    md: "min-width: @md";
+    lg: "min-width: @lg";
+    xl: "min-width: @xl";
+    xxl: "min-width: @xxl";
+}

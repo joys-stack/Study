@@ -1,0 +1,232 @@
+@charset "UTF-8";
+@import url(./common/variable.less);
+@import url(./mixin/fbutton.less);
+
+// 基础按钮样式
+.ex-button {
+    display: inline-block;
+    // 行高设置为1 等价于 height * 1
+    line-height: 1;
+    // 文字超出不允许换行
+    white-space: nowrap;
+    cursor: pointer;
+    // 使用默认的变量背景色
+    background: @button-default-background-color;
+    border: @border-base;
+    border-color: @button-default-border-color;
+    color: @button-default-font-color;
+    // 使元素看上去像标准的用户界面元素
+    appearance: none;
+    text-align: center;
+    outline: none;
+    margin: 0;
+    // border-box:盒子的内边距和边框不会撑大盒子、 content-box: 盒子的内边距和边框会撑大盒子
+    box-sizing: border-box;
+    // 感觉属性暂时没用，后续动画再加 TODO
+    transition: .1s;
+    font-weight: @button-font-weight;
+    user-select: none;
+
+    // 两个按钮并排时，增加一个外边距
+    &+& {
+        margin-left: 10px;
+    }
+
+    // 设置按钮大小
+    .button-size(@button-padding-vertical, @button-padding-horizontal, @button-font-size, @button-border-radius);
+
+    // 按钮 hover 和 focus样式
+    &:hover,
+    &:focus {
+        color: @color-primary;
+        border-color: @color-primary-light-7;
+        background-color: @color-primary-light-9;
+    }
+
+    // 按钮点击激活后的样式
+    &:active {
+        color: mix(@color-black, @color-primary, @button-active-shade-percent);
+        border-color: mix(@color-black, @color-primary, @button-active-shade-percent);
+        outline: none;
+    }
+
+    // 暂时不明白这个样式的含义
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    // 按钮中含有图标，则加左边距
+    & [class*='ex-icon-'] {
+        &+span {
+            margin-left: 5px;
+        }
+    }
+
+    // 按钮激活
+    &.is-active {
+        color: mix(@color-black, @color-primary, @button-active-shade-percent);
+        border-color: mix(@color-black, @color-primary, @button-active-shade-percent);
+    }
+
+    // 朴素按钮
+    &.is-plain {
+
+        &:hover,
+        &:focus {
+            background: @color-white;
+            border-color: @color-primary;
+            color: @color-primary;
+        }
+
+        &:active {
+            background: @color-white;
+            border-color: mix(@color-black, @color-primary, @button-active-shade-percent);
+            color: mix(@color-black, @color-primary, @button-active-shade-percent);
+            outline: none;
+        }
+    }
+
+    // 按钮禁用
+    &.is-disabled {
+
+        &,
+        &:hover,
+        &:focus {
+            color: @button-disabled-font-color;
+            cursor: not-allowed;
+            background-image: none;
+            background-color: @button-disabled-background-color;
+            border-color: @button-disabled-border-color;
+        }
+
+        // 禁用且是文本按钮背景
+        &.ex-button--text {
+            background-color: transparent;
+        }
+
+        // 禁用且是朴素按钮
+        &.is-plain {
+
+            &,
+            &:hover,
+            &:focus {
+                color: @button-disabled-font-color;
+                background-color: @color-white;
+                border-color: @button-disabled-border-color;
+            }
+        }
+    }
+
+    // 加载按钮
+    &.is-loading {
+        position: relative;
+        // 定义元素是否对指针事件做出反应
+        pointer-events: none;
+
+        &::before {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            top: -1px;
+            bottom: -1px;
+            border-radius: inherit;
+            background-color: rgba(255, 255, 255, .35);
+        }
+    }
+
+    // 圆角按钮
+    &.is-round {
+        border-radius: 20px;
+        padding: 12px 22px;
+    }
+
+    // 圆形按钮
+    &.is-circle {
+        border-radius: 50%;
+        padding: @button-padding-vertical;
+    }
+
+    // 按钮类型
+    // 主要按钮
+    &--primary {
+        .button-variant(@button-primary-font-color, @button-primary-background-color, @button-primary-border-color);
+    }
+
+    // 成功按钮
+    &--success {
+        .button-variant(@button-success-font-color, @button-success-background-color, @button-success-border-color);
+    }
+
+    // 警告按钮
+    &--warning {
+        .button-variant(@button-warning-font-color, @button-warning-background-color, @button-warning-border-color);
+    }
+
+    // 危险按钮
+    &--danger {
+        .button-variant(@button-danger-font-color, @button-danger-background-color, @button-danger-border-color);
+    }
+
+    // 信息按钮
+    &--info {
+        .button-variant(@button-info-font-color, @button-info-background-color, @button-info-border-color);
+    }
+
+    // 文本按钮
+    &--text {
+        color: @color-primary;
+        background-color: transparent;
+        border-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+
+        &:hover,
+        &:focus {
+            color: mix(@color-white, @color-primary, @button-hover-tint-percent);
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        &:active {
+            color: mix(@color-black, @color-primary, @button-active-shade-percent);
+            background-color: transparent;
+            border-color: transparent;
+        }
+
+        &.is-disabled,
+        &.is-disabled:hover,
+        &.is-disabled:focus {
+            border-color: transparent;
+        }
+    }
+
+    // 按钮大小
+    // 小
+    &--small {
+        .button-size(@button-small-padding-vertical, @button-small-padding-horizontal, @button-small-font-size, @button-small-border-radius);
+
+        &.is-circle {
+            padding: @button-small-padding-vertical;
+        }
+    }
+
+    // 中
+    &--medium {
+        .button-size(@button-medium-padding-vertical, @button-medium-padding-horizontal, @button-medium-font-size, @button-medium-border-radius);
+
+        &.is-circle {
+            padding: @button-medium-padding-vertical;
+        }
+    }
+
+    // 大
+    &--large {
+        .button-size(@button-large-padding-vertical, @button-large-padding-horizontal, @button-large-font-size, @button-large-border-radius);
+
+        &.is-circle {
+            padding: @button-large-padding-vertical;
+        }
+    }
+}

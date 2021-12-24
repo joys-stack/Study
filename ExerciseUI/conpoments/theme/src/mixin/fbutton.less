@@ -1,0 +1,90 @@
+@import url(../common/variable.less);
+
+// 设置朴素按钮
+.button-plain(@--color) {
+    color: @--color;
+    background-color: mix(@color-white, @--color, 90%);
+    border-color: mix(@color-white, @--color, 60%);
+
+    &:hover,
+    &:focus {
+        color: @color-white;
+        background-color: @--color;
+        border-color: @--color;
+    }
+
+    &:active {
+        color: @color-white;
+        background: mix(@color-black, @--color, @button-active-shade-percent);
+        border-color: mix(@color-black, @--color, @button-active-shade-percent);
+        outline: none;
+      }
+    
+      &.is-disabled {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+          color: mix(@color-white, @--color, 40%);
+          background-color: mix(@color-white, @--color, 90%);
+          border-color: mix(@color-white, @--color, 80%);
+        }
+      }
+}
+
+// 设置按钮大小的函数
+.button-size(@--padding-vertical, @--padding-horizontal, @--font-size, @--border-radius) {
+    padding: @--padding-vertical @--padding-horizontal;
+    font-size: @--font-size;
+    border-radius: @--border-radius;
+
+    // 是否是圆形按钮
+    &.is-round {
+        padding: @--padding-vertical @--padding-horizontal;
+    }
+}
+
+// 设置按钮类型
+.button-variant(@--color, @--background-color, @--border-color) {
+    color: @--color;
+    background-color: @--background-color;
+    border-color: @--border-color;
+
+    &:focus,
+    &:hover {
+        color: @--color;
+        background-color: mix(@color-white, @--background-color, @button-hover-tint-percent);
+        border-color: mix(@color-white, @--border-color, @button-hover-tint-percent);
+    }
+
+    &:active {
+        color: @--color;
+        background-color: mix(@color-black, @--background-color, @button-active-shade-percent);
+        border-color: mix(@color-black, @--border-color, @button-active-shade-percent);
+        outline: none;
+    }
+
+    &.is-active {
+        color: @--color;
+        background-color: mix(@color-black, @--background-color, @button-active-shade-percent);
+        border-color: mix(@color-black, @--border-color, @button-active-shade-percent);
+    }
+
+    // 按钮禁用
+    &.is-disabled {
+
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: @color-white;
+            background-color: mix(@--background-color, @color-white);
+            border-color: mix(@--border-color, @color-white);
+        }
+    }
+
+    // 朴素按钮
+    &.is-plain {
+        .button-plain(@--background-color)
+    }
+}

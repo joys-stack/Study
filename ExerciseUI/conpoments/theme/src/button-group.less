@@ -1,0 +1,111 @@
+@charset "UTF-8";
+@import url(./common/variable.less);
+
+.ex-button-group {
+
+    // 清除浮动
+    &::before,
+    &::after {
+        display: table;
+        content: "";
+    }
+
+    &::after {
+        clear: both;
+    }
+
+    display: inline-block;
+    vertical-align: middle;
+
+    &>.ex-button {
+        float: left;
+        position: relative;
+
+        &+.ex-button {
+            margin-left: 0;
+        }
+
+        &.is-disabled {
+            z-index: 1;
+        }
+
+        // 设置第一个按钮和最后一个按钮圆角属性
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        // 如果组里面只有一个button，则四个角都加入边框
+        &:first-child:last-child {
+            border-top-right-radius: @button-border-radius;
+            border-bottom-right-radius: @button-border-radius;
+            border-top-left-radius: @button-border-radius;
+            border-bottom-left-radius: @button-border-radius;
+
+            &.is-round {
+                border-radius: 20px;
+            }
+
+            &.is-circle {
+                border-radius: 50%;
+            }
+        }
+
+        // 如果组里不止两个按钮，则除了第一个和最后一个按钮，其他的按钮都去掉 radius
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+
+        &:not(:last-child) {
+            margin-right: -1px;
+        }
+
+        &:not(.is-disabled) {
+
+            &:hover,
+            &:focus,
+            &:active {
+                z-index: 1;
+            }
+        }
+
+        &.is-active {
+            z-index: 1;
+        }
+    }
+
+    &>.ex-dropdown {
+        &>.ex-button {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left-color: rgba(@color-white, 0.5);
+        }
+    }
+
+    // 循环不执行，暂时不知道原因 TODO
+    @TypeList: primary, success, warning, danger, info;
+
+    each(@TypeList, {
+            .el-button--@{value} {
+                &:first-child {
+                    border-right-color: rgba(@color-white, 0.5);
+                }
+
+                &:last-child {
+                    border-left-color: rgba(@color-white, 0.5);
+                }
+
+                &:not(:first-child):not(:last-child) {
+                    border-left-color: rgba(@color-white, 0.5);
+                    border-right-color: rgba(@color-white, 0.5);
+                }
+            }
+        }
+
+    );
+}
