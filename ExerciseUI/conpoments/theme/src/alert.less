@@ -1,0 +1,152 @@
+@import url(./common/variable.less);
+
+.ex-alert {
+    width: 100%;
+    padding: @alert-padding;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: @alert-border-radius;
+    position: relative;
+    background-color: @color-white;
+    overflow: hidden;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    transition: opacity .2s;
+
+    // 亮色系背景
+    &.is-light {
+        .ex-alert--closebtn {
+            color: @color-text-placeholder;
+        }
+    }
+
+    // 暗色系背景
+    &.is-dark {
+        .ex-alert--closebtn {
+            color: @color-white;
+        }
+
+        .ex-alert--description {
+            color: @color-white;
+        }
+    }
+
+    // 居中显示
+    &.is-center {
+        justify-content: center;
+    }
+
+    &--info {
+        &.is-light {
+            background-color: @alert-info-color;
+            color: @color-info;
+        }
+
+        &.is-dark {
+            background-color: @color-info;
+            color: @color-white;
+        }
+
+        .ex-alert--description {
+            color: @color-info;
+        }
+    }
+
+    &--success {
+        &.is-light {
+            background-color: @alert-success-color;
+            color: @color-success;
+
+            .ex-alert--description {
+                color: @color-success;
+            }
+        }
+
+        &.is-dark {
+            background-color: @color-success;
+            color: @color-white;
+        }
+    }
+
+    &--warning {
+        &.is-light {
+            background-color: @alert-warning-color;
+            color: @color-warning;
+
+            .ex-alert--description {
+                color: @color-warning;
+            }
+        }
+
+        &.is-dark {
+            background-color: @color-warning;
+            color: @color-white;
+        }
+    }
+
+    &--error {
+        &.is-light {
+            background-color: @alert-danger-color;
+            color: @color-danger;
+
+            .ex-alert--description {
+                color: @color-danger;
+            }
+        }
+
+        &.is-dark {
+            background-color: @color-danger;
+            color: @color-white;
+        }
+    }
+
+    &--content {
+        display: table-cell;
+        padding: 0 8px;
+    }
+
+    &--icon {
+        font-size: @alert-icon-size;
+        width: @alert-icon-size;
+
+        &.is-big {
+            font-size: @alert-icon-large-size;
+            width: @alert-icon-large-size;
+        }
+    }
+
+    &--title {
+        font-size: @alert-title-font-size;
+        line-height: 18px;
+
+        &.is-bold {
+            font-weight: 700;
+        }
+    }
+
+    &--description {
+        font-size: @alert-description-font-size;
+        margin: 5px 0 0 0;
+    }
+
+    &--closebtn {
+        font-size: @alert-close-font-size;
+        opacity: 1;
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        cursor: pointer;
+
+        &.is-customed {
+            font-style: normal;
+            font-size: @alert-close-customed-font-size;
+            top: 9px;
+        }
+    }
+}
+
+.ex-alert-fade-enter,
+.ex-alert-fade-leave-active {
+    opacity: 0;
+}

@@ -1,5 +1,10 @@
 {
+    "alert": "../conpoments/alert/index.js",
+    "avatar": "../conpoments/avatar/index.js",
+    "backtop": "../conpoments/backtop/index.js",
+    "badge": "../conpoments/badge/index.js",
     "button": "../conpoments/button/index.js",
+    "button-group": "../conpoments/button-group/index.js",
     "col": "../conpoments/col/index.js",
     "icon": "../conpoments/icon/index.js",
     "row": "../conpoments/row/index.js"

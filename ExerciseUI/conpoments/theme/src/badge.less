@@ -1,0 +1,71 @@
+@import url(./common/variable.less);
+
+.ex-badge {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+
+    &--content {
+        background-color: @badge-background-color;
+        border-radius: @badge-radius;
+        color: @color-white;
+        display: inline-block;
+        font-size: @badge-font-size;
+        height: @badge-size;
+        line-height: @badge-size;
+        padding: 0 @badge-padding;
+        text-align: center;
+        white-space: nowrap;
+        border: 1px solid @color-white;
+
+        &.is-fixed {
+            position: absolute;
+            top: 0;
+            right: (@badge-size / 2) + 1;
+            transform: translateY(-50%) translateX(100%);
+
+            &.is-dot {
+                right: 5px;
+            }
+        }
+
+        // 圆点
+        &.is-dot {
+            height: 8px;
+            width: 8px;
+            padding: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+
+        @typeList: primary, info, danger, success, warning;
+
+        each(@typeList, {
+                &--@{value} {
+                    .bg-mix(@--type) when (@--type=primary) {
+                        background-color: @color-primary;
+                    }
+
+                    .bg-mix(@--type) when (@--type=info) {
+                        background-color: @color-info;
+                    }
+
+                    .bg-mix(@--type) when (@--type=success) {
+                        background-color: @color-danger;
+                    }
+
+                    .bg-mix(@--type) when (@--type=success) {
+                        background-color: @color-success;
+                    }
+
+                    .bg-mix(@--type) when (@--type=warning) {
+                        background-color: @color-warning;
+                    }
+
+                    .bg-mix(@value)
+                }
+            }
+
+        )
+    }
+}

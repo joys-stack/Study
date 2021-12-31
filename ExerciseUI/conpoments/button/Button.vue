@@ -14,15 +14,9 @@
     @click="handleClick"
   >
     <!-- 按钮加载 -->
-    <ex-icon
-      type="loading"
-      v-if="loading"
-    ></ex-icon>
+    <i class="ex-icon-loading" v-if="loading"></i>
     <!-- 按钮图标 -->
-    <ex-icon
-      :type="icon"
-      v-if="icon && !loading"
-    ></ex-icon>
+    <i :class="'ex-icon-' + icon" v-if="icon && !loading"></i>
     <!-- 按钮文字 -->
     <span>
       <slot></slot>

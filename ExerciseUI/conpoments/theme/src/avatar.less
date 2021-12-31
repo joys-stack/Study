@@ -1,0 +1,58 @@
+@import url(./common/variable.less);
+
+.ex-avatar {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+    color: @avatar-font-color;
+    background-color: @avatar-background-color;
+    width: @avatar-large-size;
+    height: @avatar-large-size;
+    line-height: @avatar-large-size;
+    font-size: @avatar-text-font-size;
+
+    &>img {
+        display: block;
+        height: 100%;
+        // vertical-align: middle;
+    }
+
+    // 形状
+    // 圆形
+    &--circle {
+        border-radius: 50%;
+    }
+
+    // 方形
+    &--square {
+        border-radius: @avatar-border-radius;
+    }
+
+    // 图标
+    &--icon {
+        font-size: @avatar-icon-font-size;
+    }
+
+    // 型号
+    // 大
+    &--large {
+        height: @avatar-large-size;
+        width: @avatar-large-size;
+        line-height: @avatar-large-size;
+    }
+
+    // 中
+    &--medium {
+        height: @avatar-medium-size;
+        width: @avatar-medium-size;
+        line-height: @avatar-medium-size;
+    }
+
+    // 小
+    &--small {
+        height: @avatar-small-size;
+        width: @avatar-small-size;
+        line-height: @avatar-small-size;
+    }
+}

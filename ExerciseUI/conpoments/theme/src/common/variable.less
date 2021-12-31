@@ -5,6 +5,7 @@
 @border-radius-base: 4px;
 @border-color-lighter: #EBEEF5;
 @border-base: @border-width-base @border-style-base @border-color-base;
+@border-color-extra-light: #F2F6FC;
 
 // Color
 @color-white: #FFFFFF;
@@ -28,9 +29,51 @@
 @color-danger: #F56C6C;
 @color-info: #909399;
 
+@color-success-lighter: mix(@color-white, @color-success, 90%);
+@color-warning-lighter: mix(@color-white, @color-warning, 90%);
+@color-danger-lighter: mix(@color-white, @color-danger, 90%);
+@color-info-lighter: mix(@color-white, @color-info, 90%);
+
 // Font
 @font-weight-primary: 500;
 @font-size-base: 14px;
+
+// ExAvatar
+@avatar-font-color: #fff;
+@avatar-background-color: #C0C4CC;
+@avatar-text-font-size: 14px;
+@avatar-border-radius: @border-radius-base;
+@avatar-icon-font-size: 18px;
+@avatar-large-size: 40px;
+@avatar-medium-size: 36px;
+@avatar-small-size: 28px;
+
+// ExAlert
+@alert-padding: 8px 16px;
+@alert-border-radius: @border-radius-base;
+@alert-icon-size: 16px;
+@alert-icon-large-size: 28px;
+@alert-title-font-size: 13px;
+@alert-description-font-size: 12px;
+@alert-close-font-size: 12px;
+@alert-close-customed-font-size: 13px;
+
+@alert-info-color: @color-info-lighter;
+@alert-success-color: @color-success-lighter;
+@alert-warning-color: @color-warning-lighter;
+@alert-danger-color: @color-danger-lighter;
+
+// ExBacktop
+@backtop-background-color: @color-white;
+@backtop-color: @color-primary;
+@backtop-hover-background-color: @border-color-extra-light;
+
+// ExBadge
+@badge-background-color: @color-danger;
+@badge-radius: 10px;
+@badge-font-size: 12px;
+@badge-padding: 6px;
+@badge-size: 18px;
 
 // ExButton
 @button-default-background-color: @color-white;
@@ -69,17 +112,17 @@
 @button-info-background-color: @color-info;
 @button-info-border-color: @color-info;
 
-@button-small-padding-vertical: 9px;
+@button-small-padding-vertical: 11px;
 @button-small-padding-horizontal: 15px;
 @button-small-font-size: @font-size-base -2;
 @button-small-border-radius: @border-radius-base - 1;
 
-@button-medium-padding-vertical: 10px;
+@button-medium-padding-vertical: 12px;
 @button-medium-padding-horizontal: 20px;
 @button-medium-font-size: @font-size-base;
 @button-medium-border-radius: @border-radius-base;
 
-@button-large-padding-vertical: 11px;
+@button-large-padding-vertical: 13px;
 @button-large-padding-horizontal: 25px;
 @button-large-font-size: @font-size-base + 2;
 @button-large-border-radius: @border-radius-base + 1;

@@ -87,11 +87,11 @@
         }
     }
 
-    // 循环不执行，暂时不知道原因 TODO
-    @TypeList: primary, success, warning, danger, info;
+    // 按钮组添加左右边框
+    @typeList: primary, success, warning, danger, info;
 
-    each(@TypeList, {
-            .el-button--@{value} {
+    each(@typeList, {
+            .ex-button--@{value} {
                 &:first-child {
                     border-right-color: rgba(@color-white, 0.5);
                 }
