@@ -3,8 +3,12 @@
     "avatar": "../conpoments/avatar/index.js",
     "backtop": "../conpoments/backtop/index.js",
     "badge": "../conpoments/badge/index.js",
+    "breadcrumb": "../conpoments/breadcrumb/index.js",
+    "breadcrumb-item": "../conpoments/breadcrumb-item/index.js",
     "button": "../conpoments/button/index.js",
     "button-group": "../conpoments/button-group/index.js",
+    "card": "../conpoments/card/index.js",
+    "carousel": "../conpoments/carousel/index.js",
     "col": "../conpoments/col/index.js",
     "icon": "../conpoments/icon/index.js",
     "row": "../conpoments/row/index.js"

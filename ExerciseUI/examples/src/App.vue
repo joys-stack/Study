@@ -428,10 +428,16 @@
         </ex-badge>
       </ex-row>
       <ex-row>
-        <ex-badge :value="100" :max="99">
+        <ex-badge
+          :value="100"
+          :max="99"
+        >
           <ex-button size="small">消息</ex-button>
         </ex-badge>
-        <ex-badge :value="20" :max="10">
+        <ex-badge
+          :value="20"
+          :max="10"
+        >
           <ex-button size="small">消息</ex-button>
         </ex-badge>
       </ex-row>
@@ -442,13 +448,19 @@
         <ex-badge value="hot">
           <ex-button size="small">回复</ex-button>
         </ex-badge>
-        <ex-badge value="hot" is-dot>
+        <ex-badge
+          value="hot"
+          is-dot
+        >
           数据
         </ex-badge>
         <ex-badge is-dot>
           <ex-button type="primary">消息</ex-button>
         </ex-badge>
-        <ex-badge is-dot hidden>
+        <ex-badge
+          is-dot
+          hidden
+        >
           <ex-button type="primary">消息</ex-button>
         </ex-badge>
       </ex-row>
@@ -457,6 +469,66 @@
       target="#app"
       :visibilityHeight="50"
     ></ex-backtop>
+    <hr>
+    <h1>Breadcrumb</h1>
+    <ex-breadcrumb separator-icon="ex-icon-arrow-right">
+      <ex-breadcrumb-item :to="{ path: '/' }">首页</ex-breadcrumb-item>
+      <ex-breadcrumb-item>智慧招募</ex-breadcrumb-item>
+      <ex-breadcrumb-item>招募登记统计</ex-breadcrumb-item>
+    </ex-breadcrumb>
+    <ex-breadcrumb separator="/">
+      <ex-breadcrumb-item :to="{ path: '/' }">首页</ex-breadcrumb-item>
+      <ex-breadcrumb-item>智慧招募</ex-breadcrumb-item>
+      <ex-breadcrumb-item>招募登记统计</ex-breadcrumb-item>
+    </ex-breadcrumb>
+    <hr>
+    <h1>Card</h1>
+    <ex-row :gutter="16">
+      <ex-col :span="6">
+        <ex-card header="测试头部 String">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </ex-card>
+      </ex-col>
+      <ex-col :span="6">
+        <ex-card>
+          <div slot="header">
+            <span>卡片名称</span>
+            <ex-button
+              style="float: right; padding: 3px 0"
+              type="text"
+            >操作按钮</ex-button>
+          </div>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </ex-card>
+      </ex-col>
+      <ex-col :span="4">
+        <ex-card :body-style="{ padding: '0px' }">
+          <img
+            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            style="width: 100%;"
+          >
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <time class="time">{{ new Date().getFullYear() }}</time>
+              <ex-button
+                type="text"
+                class="button"
+                style="float: right; padding: 3px 0"
+              >操作按钮</ex-button>
+            </div>
+          </div>
+        </ex-card>
+      </ex-col>
+    </ex-row>
   </div>
 </template>
 
@@ -493,7 +565,7 @@ export default {
   margin-right: 8px;
 }
 
-.ex-badge{
+.ex-badge {
   margin-right: 36px;
 }
 </style>

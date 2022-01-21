@@ -1,0 +1,68 @@
+@import url(./common/variable.less);
+
+.ex-breadcrumb {
+    line-height: 1;
+    font-size: 14px;
+
+    // 清除浮动
+    &::before,
+    &::after {
+        display: table;
+        content: "";
+    }
+
+    &::after {
+        clear: both;
+    }
+
+    &--separator {
+        margin: 0 9px;
+        font-weight: bold;
+        color: @color-text-placeholder;
+
+        &[class*=icon] {
+            margin: 0 6px;
+            font-weight: normal;
+        }
+    }
+
+    &--item {
+        float: left;
+
+        &:last-child {
+
+            .ex-breadcrumb--inner,
+            .ex-breadcrumb--inner a {
+
+                &,
+                &:hover {
+                    font-weight: normal;
+                    color: @color-text-regular;
+                    cursor: text;
+                }
+            }
+
+            // 最后一个元素的分隔符不显示
+            .ex-breadcrumb--separator {
+                display: none;
+            }
+        }
+    }
+
+    &--inner {
+        color: @color-text-regular;
+
+        &.is-link,
+        & a {
+            font-weight: 700;
+            text-decoration: none;
+            transition: @color-transition-base;
+            color: @color-text-primary;
+
+            &:hover {
+                color: @color-primary;
+                cursor: pointer;
+            }
+        }
+    }
+}

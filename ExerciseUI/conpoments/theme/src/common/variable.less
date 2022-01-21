@@ -7,6 +7,10 @@
 @border-base: @border-width-base @border-style-base @border-color-base;
 @border-color-extra-light: #F2F6FC;
 
+// box-shadow
+@box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+
 // Color
 @color-white: #FFFFFF;
 @color-black: #000000;
@@ -23,6 +27,7 @@
 @color-primary-light-9: mix(@color-white, @color-primary, 90%);
 @color-text-regular: #606266;
 @color-text-placeholder: #C0C4CC;
+@color-text-primary: #303133;
 
 @color-success: #67C23A;
 @color-warning: #E6A23C;
@@ -33,6 +38,8 @@
 @color-warning-lighter: mix(@color-white, @color-warning, 90%);
 @color-danger-lighter: mix(@color-white, @color-danger, 90%);
 @color-info-lighter: mix(@color-white, @color-info, 90%);
+
+@color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1);
 
 // Font
 @font-weight-primary: 500;
@@ -126,6 +133,11 @@
 @button-large-padding-horizontal: 25px;
 @button-large-font-size: @font-size-base + 2;
 @button-large-border-radius: @border-radius-base + 1;
+
+// ExCard
+@card-border-radius: 4px;
+@card-border-color: @border-color-lighter;
+@card-padding: 20px;
 
 // Media
 @xs: 575px;
